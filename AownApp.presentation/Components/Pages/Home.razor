@@ -1,0 +1,21 @@
+﻿@page "/"
+@inject IProductService ps
+
+<h1>Our Product</h1>
+
+@foreach(var p in Products)
+{
+    
+    @p.PId @p.ProductName @p.Price
+
+}
+
+@code{
+
+    List<ProductModel> Products = new List<ProductModel>();
+
+    protected override void OnInitialized()
+    {
+        Products = ps.GetAllData();
+    }
+}
